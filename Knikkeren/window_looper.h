@@ -4,11 +4,13 @@
 #include <iostream>
 #include <string>
 
+#include <SFML/Graphics.hpp>
+
 class Window_Looper
 {
     const std::string m_name{"Knikkeren"};
 
-    const sf::Vector2f m_dims;
+    const sf::Vector2f m_dims{600.0f, 600.0f};
 
     const float m_fps{60}; // Zero Punctuation Stereotype
     const float m_frame{1/m_fps};
@@ -19,6 +21,8 @@ class Window_Looper
 public:
 
     Window_Looper();
+
+    void winloop();
 
 };
 
