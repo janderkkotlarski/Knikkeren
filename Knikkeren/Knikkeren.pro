@@ -12,3 +12,6 @@ INCLUDEPATH += D:/SFML-2.4.0/include
 LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 LIBS += -LD:/SFML-2.4.0/lib
 LIBS += -LD:\SFML-2.4.0\bin
+
+HEADERS += \
+    window_looper.h

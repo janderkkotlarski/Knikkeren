@@ -18,7 +18,7 @@ class Window_Looper
 
 public:
 
-    Window_Looper()
+    Window_Looper();
 
 };
 
