@@ -1,14 +1,14 @@
-#include "window_looper.h"
+#include "game.h"
 #include "knikker.h"
 
-Window_Looper::Window_Looper()
+Game::Game()
 : m_name("Knikkeren"), m_dims(600.0f, 600.0f), m_fps(60.0f),
   m_frame(1/m_fps), m_background(127, 63, 31), m_filler(223, 127, 95),
   m_window(sf::VideoMode(m_dims.x, m_dims.y), m_name, sf::Style::Default)
 {
 }
 
-void Window_Looper::winloop()
+void Game::run()
 {
     const sf::Vector2f my_little_speedling{0.03f*m_dims.x, 0.02f*m_dims.y};
 

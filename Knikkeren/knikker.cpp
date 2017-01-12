@@ -27,12 +27,12 @@ void Knikker::movit()
     posit_add_speed();
 }
 
-void Knikker::display_knikker(sf::RenderWindow &window)
+void Knikker::display_knikker(sf::RenderWindow &window) const
 {
     window.draw(m_circle);
 }
 
-Knikker create_knikker()
+Knikker create_knikker() noexcept
 {
     return Knikker(5.0f, 1.0f, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(0.0f, 0.0f),
                    1.0f/60.0f, sf::Color(191, 191, 191));

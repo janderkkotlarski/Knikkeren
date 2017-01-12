@@ -6,7 +6,7 @@
 
 #include <SFML/Graphics.hpp>
 
-class Window_Looper
+class Game
 {
     const std::string m_name;
 
@@ -22,9 +22,9 @@ class Window_Looper
 
 public:
 
-    Window_Looper();
+    Game();
 
-    void winloop();
+    void run();
 };
 
 #endif // WINDOW_LOOPER_H

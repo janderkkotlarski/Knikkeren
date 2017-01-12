@@ -19,7 +19,7 @@ class Knikker
 
 public:
 
-    Knikker(const float radius, const float mass, const sf::Vector2f &posit,
+    explicit Knikker(const float radius, const float mass, const sf::Vector2f &posit,
             const sf::Vector2f &speed, const float frame, const sf::Color &color);
 
     float get_radius() const noexcept {return m_radius;}
@@ -29,9 +29,9 @@ public:
 
     void movit();
 
-    void display_knikker(sf::RenderWindow &window);
+    void display_knikker(sf::RenderWindow &window) const;
 };
 
-Knikker create_knikker();
+Knikker create_knikker() noexcept;
 
 #endif // KNIKKER_H

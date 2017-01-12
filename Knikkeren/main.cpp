@@ -1,15 +1,17 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-#include "window_looper.h"
+#include "game.h"
+
+
 
 
 int main()
 {
 
-    Window_Looper lind;
+    Game game;
 
-    lind.winloop();
+    game.run();
 
     return 0;
 }
