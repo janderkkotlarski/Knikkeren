@@ -3,7 +3,8 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    window_looper.cpp
 
 QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra
 
