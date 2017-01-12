@@ -15,4 +15,5 @@ LIBS += -LD:/SFML-2.4.0/lib
 LIBS += -LD:\SFML-2.4.0\bin
 
 HEADERS += \
-    window_looper.h
+    window_looper.h \
+    knikker.h
