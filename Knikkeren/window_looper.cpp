@@ -12,6 +12,9 @@ void Window_Looper::winloop()
 {
     Knikker knikker(0.1f*m_dims.x, 1.0f, 0.5f*m_dims, 0.0f*m_dims, m_filler);
 
+    Knikker gnigger{create_knikker()};
+
+
     while(m_window.isOpen())
     {
         sf::Event event;
@@ -28,6 +31,8 @@ void Window_Looper::winloop()
         }
 
         m_window.clear(m_background);
+        knikker.display_knikker(m_window);
+        gnigger.display_knikker(m_window);
         m_window.display();
 
         time = clock.getElapsedTime();
