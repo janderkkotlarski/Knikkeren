@@ -3,7 +3,9 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    game.cpp \
+    knikker.cpp
 
 QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra
 
@@ -14,4 +16,6 @@ LIBS += -LD:/SFML-2.4.0/lib
 LIBS += -LD:\SFML-2.4.0\bin
 
 HEADERS += \
-    window_looper.h
+    window_looper.h \
+    game.h \
+    knikker.h
