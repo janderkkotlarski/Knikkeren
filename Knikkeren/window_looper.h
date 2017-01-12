@@ -8,15 +8,15 @@
 
 class Window_Looper
 {
-    const std::string m_name{"Knikkeren"};
+    const std::string m_name;
 
-    const sf::Vector2f m_dims{600.0f, 600.0f};
+    const sf::Vector2f m_dims;
 
-    const float m_fps{60}; // Zero Punctuation Stereotype
-    const float m_frame{1/m_fps};
+    const float m_fps; // Zero Punctuation Stereotype
+    const float m_frame;
 
-    const sf::Color m_background{127, 63, 31};
-    const sf::Color m_filler{223, 127, 95};
+    const sf::Color m_background;
+    const sf::Color m_filler;
 
     sf::RenderWindow m_window;
 

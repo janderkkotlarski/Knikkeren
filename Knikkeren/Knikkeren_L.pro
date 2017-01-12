@@ -4,7 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    window_looper.cpp
+    window_looper.cpp \
+    knikker.cpp
 
 QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra
 
