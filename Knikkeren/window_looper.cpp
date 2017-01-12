@@ -10,7 +10,9 @@ Window_Looper::Window_Looper()
 
 void Window_Looper::winloop()
 {
-    Knikker knikker(0.1f*m_dims.x, 1.0f, 0.5f*m_dims, 0.0f*m_dims, m_filler);
+    const sf::Vector2f my_little_speedling{0.03f*m_dims.x, 0.02f*m_dims.y};
+
+    Knikker knikker(0.1f*m_dims.x, 1.0f, 0.5f*m_dims, my_little_speedling, m_frame, m_filler);
 
     Knikker gnigger{create_knikker()};
 
@@ -34,6 +36,9 @@ void Window_Looper::winloop()
         knikker.display_knikker(m_window);
         gnigger.display_knikker(m_window);
         m_window.display();
+
+        knikker.movit();
+        gnigger.movit();
 
         time = clock.getElapsedTime();
 
