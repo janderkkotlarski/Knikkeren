@@ -5,8 +5,9 @@
 
 class Knikker
 {
-    const float m_radius;
     const float m_mass;
+    const float m_radius;
+    const sf::Vector2f m_dims;
     sf::Vector2f m_posit;
     sf::Vector2f m_speed;
     const float m_frame;
@@ -17,9 +18,14 @@ class Knikker
 
     void posit_add_speed();
 
+    void minflect();
+    void maxflect();
+
+    void wall_reflect();
+
 public:
 
-    explicit Knikker(const float radius, const float mass, const sf::Vector2f &posit,
+    explicit Knikker(const float mass, const float radius, const sf::Vector2f &dims, const sf::Vector2f &posit,
             const sf::Vector2f &speed, const float frame, const sf::Color &color);
 
     float get_radius() const noexcept {return m_radius;}

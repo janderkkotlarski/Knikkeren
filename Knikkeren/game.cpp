@@ -10,9 +10,9 @@ Game::Game()
 
 void Game::run()
 {
-    const sf::Vector2f my_little_speedling{0.03f*m_dims.x, 0.02f*m_dims.y};
+    const sf::Vector2f my_little_speedling{0.3f*m_dims.x, 0.23f*m_dims.y};
 
-    Knikker knikker(0.1f*m_dims.x, 1.0f, 0.5f*m_dims, my_little_speedling, m_frame, m_filler);
+    Knikker knikker(1.0f, 0.1f*m_dims.x, m_dims, 0.5f*m_dims, my_little_speedling, m_frame, m_filler);
 
     Knikker gnigger{create_knikker()};
 
