@@ -71,6 +71,6 @@ void Knikker::display_knikker(sf::RenderWindow &window) const
 
 Knikker create_knikker() noexcept
 {
-    return Knikker(1.0f, 5.0f, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(100.0f, 100.0f),
-                   sf::Vector2f(0.0f, 0.0f), 1.0f/60.0f, sf::Color(191, 191, 191));
+    return Knikker(1.0f, 5.0f, sf::Vector2f(600.0f, 600.0f), sf::Vector2f(100.0f, 100.0f),
+                   sf::Vector2f(3.0f, 5.0f), 1.0f/60.0f, sf::Color(191, 191, 191));
 }
