@@ -2,4 +2,5 @@
 
 2D Knikkerspel.
 
-Screenshot.png
+![Screenshot](Screenshot.png)
+
