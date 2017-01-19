@@ -1,6 +1,7 @@
 #ifndef WINDOW_LOOPER_H
 #define WINDOW_LOOPER_H
 
+#include <cassert>
 #include <iostream>
 #include <string>
 

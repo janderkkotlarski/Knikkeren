@@ -2,11 +2,14 @@
 
 void Knikker::set_circle()
 {
+
+
     m_circle.setRadius(m_radius);
     m_circle.setOrigin(m_radius, m_radius);
     m_circle.setPosition(m_posit);
     m_circle.setFillColor(m_color);
 }
+
 void Knikker::posit_add_speed()
 {
     m_posit += m_frame*m_speed;
@@ -21,11 +24,15 @@ void Knikker::minflect()
         m_speed.x *= -1.0f;
     }
 
+    assert(m_posit.x >= m_radius);
+
     if (m_posit.y < m_radius)
     {
         m_posit.y += 2.0f*(m_radius - m_posit.y);
         m_speed.y *= -1.0f;
     }
+
+    assert(m_posit.y >= m_radius);
 }
 
 void Knikker::maxflect()
@@ -36,11 +43,15 @@ void Knikker::maxflect()
         m_speed.x *= -1.0f;
     }
 
+    assert(m_posit.x <= m_dims.x - m_radius);
+
     if (m_posit.y > m_dims.y - m_radius)
     {
         m_posit.y -= 2.0f*(m_posit.y + m_radius - m_dims.y);
         m_speed.y *= -1.0f;
     }
+
+    assert(m_posit.y <= m_dims.y - m_radius);
 }
 
 void Knikker::wall_reflect()
@@ -55,6 +66,16 @@ Knikker::Knikker(const float mass, const float radius, const sf::Vector2f &dims,
     : m_mass(mass), m_radius(radius), m_dims(dims), m_posit(posit), m_speed(speed), m_frame(frame),
       m_color(color), m_circle()
 {
+    assert(m_mass > 0.0f);
+    assert(m_radius > 0.0f);
+    assert(m_posit.x >= m_radius);
+    assert(m_posit.x <= m_dims.x - m_radius);
+    assert(m_posit.y >= m_radius);
+    assert(m_posit.y <= m_dims.y - m_radius);
+    assert(m_speed.x < m_dims.x);
+    assert(m_speed.y < m_dims.y);
+    assert(m_frame > 0.0f);
+
     set_circle();
 }
 

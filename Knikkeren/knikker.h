@@ -1,6 +1,7 @@
 #ifndef KNIKKER_H
 #define KNIKKER_H
 
+#include <cassert>
 #include <SFML/Graphics.hpp>
 
 class Knikker

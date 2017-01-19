@@ -17,4 +17,5 @@ LIBS += -LD:\SFML-2.4.0\bin
 
 HEADERS += \
     knikker.h \
-    game.h
+    game.h \
+    bollen.h
