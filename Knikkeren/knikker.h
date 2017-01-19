@@ -15,7 +15,7 @@ class Knikker
     sf::Color m_color;
     sf::CircleShape m_circle;
 
-    void set_circle();
+
 
     void posit_add_speed();
 
@@ -25,6 +25,8 @@ class Knikker
     void wall_reflect();
 
 public:
+
+    void set_circle();
 
     explicit Knikker(const float mass, const float radius, const sf::Vector2f &dims, const sf::Vector2f &posit,
             const sf::Vector2f &speed, const float frame, const sf::Color &color);

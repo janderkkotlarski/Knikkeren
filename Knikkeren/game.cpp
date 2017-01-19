@@ -1,5 +1,5 @@
 #include "game.h"
-#include "knikker.h"
+
 
 Game::Game()
 : m_name("Knikkeren"), m_dims(600.0f, 600.0f), m_fps(60.0f),
@@ -20,6 +20,8 @@ void Game::run()
 
     Knikker gnigger{create_knikker()};
 
+    Bollen bollen(1000, m_dims, m_fps);
+
 
     while(m_window.isOpen())
     {
@@ -38,11 +40,12 @@ void Game::run()
 
         m_window.clear(m_background);
         knikker.display_knikker(m_window);
-        gnigger.display_knikker(m_window);
+        // gnigger.display_knikker(m_window);
+        bollen.display_bollen(m_window);
         m_window.display();
 
         knikker.movit();
-        gnigger.movit();
+        // gnigger.movit();
 
         time = clock.getElapsedTime();
 

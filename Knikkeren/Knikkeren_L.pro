@@ -5,7 +5,8 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     knikker.cpp \
-    game.cpp
+    game.cpp \
+    bollen.cpp
 
 QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra
 

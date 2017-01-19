@@ -7,6 +7,9 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "knikker.h"
+#include "bollen.h"
+
 class Game
 {
     const std::string m_name;
