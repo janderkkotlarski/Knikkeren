@@ -1,16 +1,23 @@
 #include "bollen.h"
 
+
+
 void Bollen::plaats_knikkers()
 {
     for (int count{0}; count < m_aantal; ++count)
     {
         Knikker knik{random_knikker(m_dims, 1.0f/m_fps)};
 
+        if (count > 0)
+        {
+
+        }
+
         m_knikkers.push_back(knik);
     }
 }
 
-void Bollen::display(sf::RenderWindow &window)
+void Bollen::display(sf::RenderWindow &window) const
 {
     for (int count{0}; count < m_aantal; ++count)
     {
@@ -132,6 +139,8 @@ Knikker random_knikker(const sf::Vector2f &dims, const float frame)
 
     const float radius{random_radius(dims)};
 
-    return Knikker(random_mass(), radius, dims, random_posit(radius, dims),
+    sf::Vector2f posit{random_posit(radius, dims)};
+
+    return Knikker(random_mass(), radius, dims, posit,
                    random_speed(dims), frame, random_color());
 }

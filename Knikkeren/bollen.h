@@ -24,7 +24,7 @@ public:
 
     explicit Bollen(const int aantal, const sf::Vector2f &dims, const float fps);
 
-    void display(sf::RenderWindow &window);
+    void display(sf::RenderWindow &window) const;
 
     void move();
 };
