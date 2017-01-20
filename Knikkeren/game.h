@@ -1,5 +1,5 @@
-#ifndef WINDOW_LOOPER_H
-#define WINDOW_LOOPER_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <cassert>
 #include <iostream>
@@ -31,4 +31,4 @@ public:
     void run();
 };
 
-#endif // WINDOW_LOOPER_H
+#endif // GAME_H

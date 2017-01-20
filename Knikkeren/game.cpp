@@ -14,13 +14,13 @@ Game::Game()
 
 void Game::run()
 {
-    const sf::Vector2f my_little_speedling{0.3f*m_dims.x, 0.23f*m_dims.y};
+    // const sf::Vector2f my_little_speedling{0.3f*m_dims.x, 0.23f*m_dims.y};
 
-    Knikker knikker(1.0f, 0.1f*m_dims.x, m_dims, 0.5f*m_dims, my_little_speedling, m_frame, m_filler);
+    // Knikker knikker(1.0f, 0.1f*m_dims.x, m_dims, 0.5f*m_dims, my_little_speedling, m_frame, m_filler);
 
-    Knikker gnigger{create_knikker()};
+    // Knikker gnigger{create_knikker()};
 
-    Bollen bollen(1000, m_dims, m_fps);
+    Bollen bollen(10, m_dims, m_fps);
 
 
     while(m_window.isOpen())
@@ -39,13 +39,14 @@ void Game::run()
         }
 
         m_window.clear(m_background);
-        knikker.display_knikker(m_window);
+        // knikker.display_knikker(m_window);
         // gnigger.display_knikker(m_window);
-        bollen.display_bollen(m_window);
+        bollen.display(m_window);
         m_window.display();
 
-        knikker.movit();
+        // knikker.movit();
         // gnigger.movit();
+        bollen.move();
 
         time = clock.getElapsedTime();
 
