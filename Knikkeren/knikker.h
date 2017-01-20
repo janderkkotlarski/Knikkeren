@@ -38,6 +38,8 @@ public:
 
 Knikker create_knikker() noexcept;
 
+float square(const float linear);
+
 sf::Vector2f distance(const sf::Vector2f &posit_a, const sf::Vector2f &posit_b);
 
 float abstance_2(const sf::Vector2f &dist);
