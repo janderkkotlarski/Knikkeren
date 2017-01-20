@@ -17,6 +17,8 @@ class Knikker
     void minflect();
     void maxflect();
 
+
+
     void wall_reflect();
 
 public:
@@ -33,6 +35,8 @@ public:
 
     void movit();
 
+    void reflect();
+
     void display_knikker(sf::RenderWindow &window) const;
 };
 
@@ -45,5 +49,23 @@ sf::Vector2f distance(const sf::Vector2f &posit_a, const sf::Vector2f &posit_b);
 float abstance_2(const sf::Vector2f &dist);
 
 bool botsing(Knikker &here, Knikker &there);
+
+float medims(const sf::Vector2f &dims);
+
+int frac_to_byte(const float frac);
+
+float random_frac();
+
+float random_mass();
+
+float random_radius(const sf::Vector2f &dims);
+
+sf::Vector2f random_posit(const float radius, const sf::Vector2f &dims);
+
+sf::Vector2f random_speed(const sf::Vector2f &dims);
+
+sf::Color random_color();
+
+Knikker random_knikker(const sf::Vector2f &dims, const float frame);
 
 #endif // KNIKKER_H
