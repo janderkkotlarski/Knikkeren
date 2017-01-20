@@ -144,3 +144,5 @@ Knikker random_knikker(const sf::Vector2f &dims, const float frame)
     return Knikker(random_mass(), radius, dims, posit,
                    random_speed(dims), frame, random_color());
 }
+
+

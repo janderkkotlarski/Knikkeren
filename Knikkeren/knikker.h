@@ -38,4 +38,10 @@ public:
 
 Knikker create_knikker() noexcept;
 
+sf::Vector2f distance(const sf::Vector2f &posit_a, const sf::Vector2f &posit_b);
+
+float abstance_2(const sf::Vector2f &dist);
+
+bool botsing(Knikker &here, Knikker &there);
+
 #endif // KNIKKER_H

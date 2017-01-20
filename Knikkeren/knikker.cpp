@@ -104,3 +104,20 @@ Knikker create_knikker() noexcept
     return Knikker(1.0f, 5.0f, sf::Vector2f(600.0f, 600.0f), sf::Vector2f(100.0f, 100.0f),
                    sf::Vector2f(3.0f, 5.0f), 1.0f/60.0f, sf::Color(191, 191, 191));
 }
+
+sf::Vector2f distance(const sf::Vector2f &posit_a, const sf::Vector2f &posit_b)
+{
+    return posit_b - posit_a;
+}
+
+float abstance_2(const sf::Vector2f &dist)
+{
+    return dist.x*dist.x + dist.y*dist.y;
+}
+
+bool botsing(Knikker &here, Knikker &there)
+{
+    const float dist_2{abstance_2(distance(here.get_posit(), there.get_posit()))};
+
+    return false;
+}
