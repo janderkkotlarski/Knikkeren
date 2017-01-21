@@ -151,7 +151,7 @@ int frac_to_byte(const float frac)
     assert(frac >= 0.0f);
     assert(frac <= 1.0f);
 
-    return static_cast<int>(round(255.0f*frac));
+    return static_cast<int>(std::round(255.0f*frac));
 }
 
 float random_frac()

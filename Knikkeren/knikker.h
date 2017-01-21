@@ -2,6 +2,9 @@
 #define KNIKKER_H
 
 #include <cassert>
+#include <cmath>
+#include <random>
+
 #include <SFML/Graphics.hpp>
 
 class Knikker

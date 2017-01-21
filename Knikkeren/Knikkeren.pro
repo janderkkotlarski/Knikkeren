@@ -5,7 +5,8 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     game.cpp \
-    knikker.cpp
+    knikker.cpp \
+    bollen.cpp
 
 QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra
 
@@ -18,4 +19,5 @@ LIBS += -LD:\SFML-2.4.0\bin
 HEADERS += \
     window_looper.h \
     game.h \
-    knikker.h
+    knikker.h \
+    bollen.h
