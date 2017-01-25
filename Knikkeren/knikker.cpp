@@ -130,6 +130,7 @@ bool botsing(Knikker &here, Knikker &there)
 
     const float radi_2{square(here.get_radius() + there.get_radius())};
 
+
     if (dist_2 <= radi_2)
     {
         return true;
@@ -156,7 +157,11 @@ int frac_to_byte(const float frac)
 
 float random_frac()
 {
-    std::random_device rand;
+    sf::Clock clock;
+
+    unsigned seed{clock.getElapsedTime().asMicroseconds()};
+
+    std::minstd_rand0 rand(seed);
 
     return static_cast<float>(rand())/static_cast<float>(rand.max());
 }

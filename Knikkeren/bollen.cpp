@@ -6,8 +6,6 @@ void Bollen::plaats_knikkers()
     {
         Knikker knik{random_knikker(m_dims, 1.0f/m_fps)};
 
-        // std::cout << "Knik\n";
-
         if (count > 0)
         {
             bool colli{true};
@@ -20,15 +18,13 @@ void Bollen::plaats_knikkers()
                 {
                     if (botsing(knik, m_knikkers[count_2]))
                     {
-                        colli = true;
+                        // colli = true;
                     }
                 }
             }
         }
 
         m_knikkers.push_back(knik);
-
-        // std::cout << "Pushed\n";
     }
 }
 

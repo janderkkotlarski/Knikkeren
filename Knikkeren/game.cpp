@@ -13,7 +13,7 @@ Game::Game()
 
 void Game::run()
 {
-    Bollen bollen(12, m_dims, m_fps);
+    Bollen bollen(8, m_dims, m_fps);
 
     while(m_window.isOpen())
     {
