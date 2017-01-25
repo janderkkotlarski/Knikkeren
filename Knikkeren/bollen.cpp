@@ -55,9 +55,16 @@ int frac_to_byte(const float frac)
 
 float random_frac()
 {
-    std::random_device rand;
+    const unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
-    return static_cast<float>(rand())/static_cast<float>(rand.max());
+    std::mt19937 rand(seed);
+
+    const float rando{static_cast<float>(rand())};
+    const float maxo{static_cast<float>(rand.max())};
+
+    std::cout << rando << " / " << maxo << " = " << rando/maxo << "\n";
+
+    return rando/maxo;
 }
 
 float random_mass()
@@ -103,9 +110,9 @@ sf::Vector2f random_speed(const sf::Vector2f &dims)
     assert(dims.x > 0.0f);
     assert(dims.y > 0.0f);
 
-    const float perc{0.2f};
+    const float perc{0.5f};
     assert(perc > 0.0f);
-    assert(perc <= 0.2f);
+    assert(perc <= 0.5f);
 
     const float speed{(random_frac() - 0.5f)*perc*medims(dims)};
 
