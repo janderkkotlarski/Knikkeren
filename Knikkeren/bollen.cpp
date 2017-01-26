@@ -4,11 +4,24 @@ void Bollen::plaats_knikkers(unsigned &seed)
 {
     for (int count{0}; count < m_aantal; ++count)
     {
+        bool overlap = true;
 
+        while (overlap)
+        {
+            overlap = false;
 
-        Knikker knik{random_knikker(m_dims, 1.0f/m_fps, seed)};
+            Knikker knik{random_knikker(m_dims, 1.0f/m_fps, seed)};
 
-        m_knikkers.push_back(knik);
+            if (count > 0)
+            {
+                // for ()
+            }
+
+            if (!overlap)
+            {
+                m_knikkers.push_back(knik);
+            }
+        }
     }
 }
 
@@ -17,6 +30,8 @@ void Bollen::display(sf::RenderWindow &window)
     for (int count{0}; count < m_aantal; ++count)
     {
         m_knikkers[count].display_knikker(window);
+
+        std::cout << m_knikkers[count].get_mass() << "\n";
     }
 }
 

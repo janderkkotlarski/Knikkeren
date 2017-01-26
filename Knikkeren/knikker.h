@@ -36,6 +36,14 @@ public:
     void display_knikker(sf::RenderWindow &window) const;
 };
 
+
+
+sf::Vector2f afstand(const sf::Vector2f &posit_1, const sf::Vector2f &posit_2) noexcept;
+
+float vectraat(const sf::Vector2f &vect) noexcept;
+
+float kwadraat(const float scalar) noexcept;
+
 bool overlap(Knikker &knik_1, Knikker &knik_2);
 
 #endif // KNIKKER_H

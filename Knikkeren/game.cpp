@@ -20,6 +20,10 @@ void Game::run()
 
     // Knikker gnigger{create_knikker()};
 
+    // std::vector <Knikker> marbles;
+
+    // for
+
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
     Bollen bollen(10, m_dims, m_fps, seed);

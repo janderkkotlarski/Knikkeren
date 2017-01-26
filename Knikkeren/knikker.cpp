@@ -99,10 +99,25 @@ void Knikker::display_knikker(sf::RenderWindow &window) const
     window.draw(m_circle);
 }
 
+sf::Vector2f afstand(const sf::Vector2f &posit_1, const sf::Vector2f &posit_2) noexcept
+{
+    return posit_2 - posit_1;
+}
+
+float vectraat(const sf::Vector2f &vect) noexcept
+{
+    return vect.x*vect.x + vect.y*vect.y;
+}
+
+float kwadraat(const float scalar) noexcept
+{
+    return scalar*scalar;
+}
+
 bool overlap(Knikker &knik_1, Knikker &knik_2)
 {
-    if (afstand_2(knik_1.get_posit(), knik_2.get_posit()) <=
-        radius_2(knik_1.get_radius(), knik_2.get_radius()))
+    if (vectraat(afstand(knik_1.get_posit(), knik_2.get_posit())) <=
+        kwadraat(knik_1.get_radius() + knik_2.get_radius()))
     {
         return true;
     }
