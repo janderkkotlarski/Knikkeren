@@ -19,11 +19,11 @@ class Bollen
     const sf::Vector2f m_dims;
     const float m_fps;
 
-    void plaats_knikkers();
+    void plaats_knikkers(unsigned &seed);
 
 public:
 
-    explicit Bollen(const int aantal, const sf::Vector2f &dims, const float fps);
+    explicit Bollen(const int aantal, const sf::Vector2f &dims, const float fps, unsigned &seed);
 
     void display(sf::RenderWindow &window);
 
@@ -34,18 +34,18 @@ float medims(const sf::Vector2f &dims);
 
 int frac_to_byte(const float frac);
 
-float random_frac();
+float random_frac(unsigned &seed);
 
-float random_mass();
+float random_mass(unsigned &seed);
 
-float random_radius(const sf::Vector2f &dims);
+float random_radius(const sf::Vector2f &dims, unsigned &seed);
 
-sf::Vector2f random_posit(const float radius, const sf::Vector2f &dims);
+sf::Vector2f random_posit(const float radius, const sf::Vector2f &dims, unsigned &seed);
 
-sf::Vector2f random_speed(const sf::Vector2f &dims);
+sf::Vector2f random_speed(const sf::Vector2f &dims, unsigned &seed);
 
-sf::Color random_color();
+sf::Color random_color(unsigned &seed);
 
-Knikker random_knikker(const sf::Vector2f &dims, const float frame);
+Knikker random_knikker(const sf::Vector2f &dims, const float frame, unsigned &seed);
 
 #endif // BOLLEN_H

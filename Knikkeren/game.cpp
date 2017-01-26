@@ -20,7 +20,9 @@ void Game::run()
 
     // Knikker gnigger{create_knikker()};
 
-    Bollen bollen(10, m_dims, m_fps);
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+
+    Bollen bollen(10, m_dims, m_fps, seed);
 
 
     while(m_window.isOpen())
