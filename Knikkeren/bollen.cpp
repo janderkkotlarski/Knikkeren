@@ -4,6 +4,8 @@ void Bollen::plaats_knikkers(unsigned &seed)
 {
     for (int count{0}; count < m_aantal; ++count)
     {
+
+
         Knikker knik{random_knikker(m_dims, 1.0f/m_fps, seed)};
 
         m_knikkers.push_back(knik);

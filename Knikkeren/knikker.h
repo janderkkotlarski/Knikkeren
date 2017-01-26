@@ -36,6 +36,6 @@ public:
     void display_knikker(sf::RenderWindow &window) const;
 };
 
-Knikker create_knikker() noexcept;
+bool overlap(Knikker &knik_1, Knikker &knik_2);
 
 #endif // KNIKKER_H

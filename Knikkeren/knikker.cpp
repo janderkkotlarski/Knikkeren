@@ -99,8 +99,14 @@ void Knikker::display_knikker(sf::RenderWindow &window) const
     window.draw(m_circle);
 }
 
-Knikker create_knikker() noexcept
+bool overlap(Knikker &knik_1, Knikker &knik_2)
 {
-    return Knikker(1.0f, 5.0f, sf::Vector2f(600.0f, 600.0f), sf::Vector2f(100.0f, 100.0f),
-                   sf::Vector2f(3.0f, 5.0f), 1.0f/60.0f, sf::Color(191, 191, 191));
+    if (afstand_2(knik_1.get_posit(), knik_2.get_posit()) <=
+        radius_2(knik_1.get_radius(), knik_2.get_radius()))
+    {
+        return true;
+    }
+
+    return false;
+
 }
