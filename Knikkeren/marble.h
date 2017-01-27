@@ -2,6 +2,7 @@
 #define MARBLE_H
 
 #include <cassert>
+#include <cmath>
 #include <SFML/Graphics.hpp>
 
 class Marble
@@ -10,19 +11,20 @@ class Marble
     const sf::Vector2f m_dims;
     sf::Vector2f m_speed;
     const float m_frame;
-    const float m_div;
+    const int m_div;
+    const float m_diframe;
     sf::CircleShape m_circle;
     sf::Vector2f m_past;
 
     void set_past() noexcept {m_past = m_circle.getPosition();}
-
-    void add_speed();
 
     void collide_wall();
 
     void move_cycle();
 
 public:
+
+    void add_speed(const float period) {m_circle.move(period*m_speed);}
 
     void set_circle(const float radius, const sf::Vector2f &posit, const sf::Color &color);
 
@@ -33,6 +35,7 @@ public:
     float get_mass() const noexcept {return m_mass;}
     sf::Vector2f get_posit() const noexcept {return m_circle.getPosition();}
     sf::Vector2f get_speed() const noexcept {return m_speed;}
+    float get_diframe() const noexcept {return m_diframe;}
 
     void set_speed(const sf::Vector2f &speed) {m_speed = speed;}
 
@@ -50,6 +53,8 @@ float vectuare(const sf::Vector2f &vect) noexcept;
 float square(const float scalar) noexcept;
 
 bool overlap(Marble &marb_1, Marble &marb_2);
+
+float repolate(Marble &marb_1, Marble &marb_2);
 
 void simpflect(Marble &marb_1, Marble &marb_2);
 

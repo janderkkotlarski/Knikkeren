@@ -14,7 +14,7 @@ void Balls::place_marbles(unsigned &seed)
 
             if (count > 0)
             {
-                for (Marble knak: m_marbles)
+                for (Marble knak : m_marbles)
                 {
                     if (overlap(knik, knak))
                     {

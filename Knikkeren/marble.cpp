@@ -8,11 +8,6 @@ void Marble::set_circle(const float radius, const sf::Vector2f &posit, const sf:
     m_circle.setFillColor(color);
 }
 
-void Marble::add_speed()
-{
-    m_circle.move(m_frame*m_speed/m_div);
-}
-
 void Marble::collide_wall()
 {
     m_circle.setPosition(walled(m_dims.x, m_circle.getPosition().x, m_circle.getRadius(), m_speed.x),
@@ -21,10 +16,10 @@ void Marble::collide_wall()
 
 void Marble::move_cycle()
 {
-    for (int count{0}; count < static_cast<int>(m_div); ++count)
+    for (int count{0}; count < m_div; ++count)
     {
         set_past();
-        add_speed();
+        add_speed(m_diframe);
         collide_wall();
     }
 }
@@ -32,7 +27,8 @@ void Marble::move_cycle()
 Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
                  const sf::Vector2f &posit, const sf::Vector2f &speed, const float frame,
                  const float div, const sf::Color &color)
-    : m_mass(mass), m_dims(dims), m_speed(speed), m_frame(frame), m_div(div), m_circle(), m_past()
+    : m_mass(mass), m_dims(dims), m_speed(speed), m_frame(frame),
+      m_div(static_cast<int>(div)), m_diframe(m_frame/div), m_circle(), m_past()
 {
     assert(m_mass > 0.0f);
     assert(radius > 0.0f);
@@ -59,6 +55,10 @@ void Marble::display_marble(sf::RenderWindow &window) const
 {
     window.draw(m_circle);
 }
+
+
+
+
 
 float walled(const float wall, const float current, const float radius, float &veloc)
 {
@@ -103,13 +103,26 @@ bool overlap(Marble &marb_1, Marble &marb_2)
     return false;
 }
 
-void repolate(Marble &marb_1, Marble &marb_2)
+float repolate(Marble &marb_1, Marble &marb_2)
 {
     const sf::Vector2f dist{distance(marb_1.get_posit(), marb_2.get_posit())};
-
     const sf::Vector2f fast{distance(marb_1.get_speed(), marb_2.get_speed())};
 
+    const float diframe{0.5f*(marb_1.get_diframe() + marb_2.get_diframe())};
 
+    const float radi_2{square(marb_1.get_radius() + marb_2.get_radius())};
+
+    const float alpha{vectuare(fast)};
+
+    const float beta{2.0f*(dist.x*fast.x + dist.y*fast.y)};
+
+    const float gamma{vectuare(dist) - radi_2};
+
+    const float delta{std::sqrt(square(beta) - 4.0f*alpha*gamma)};
+
+    const float deltime{diframe - 0.5f*(delta - beta)/alpha};
+
+    return deltime;
 }
 
 void simpflect(Marble &marb_1, Marble &marb_2)
@@ -118,7 +131,10 @@ void simpflect(Marble &marb_1, Marble &marb_2)
     {
         marb_1.set_speed(-marb_1.get_speed());
         marb_2.set_speed(-marb_2.get_speed());
+
+        const float period{2.0f*repolate(marb_1, marb_2)};
+
+        marb_1.add_speed(period);
+        marb_2.add_speed(period);
     }
-
-
 }
