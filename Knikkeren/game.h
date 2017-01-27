@@ -7,8 +7,8 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "knikker.h"
-#include "bollen.h"
+#include "marble.h"
+#include "balls.h"
 
 class Game
 {

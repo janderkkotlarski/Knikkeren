@@ -1,5 +1,5 @@
-#ifndef BOLLEN_H
-#define BOLLEN_H
+#ifndef BALLS_H
+#define BALLS_H
 
 #include <cassert>
 #include <vector>
@@ -10,24 +10,26 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "knikker.h"
+#include "marble.h"
 
-class Bollen
+class Balls
 {
-    const int m_aantal;
-    std::vector <Knikker> m_knikkers;
+    const int m_number;
+    std::vector <Marble> m_marbles;
     const sf::Vector2f m_dims;
     const float m_fps;
 
-    void plaats_knikkers(unsigned &seed);
+    void place_marbles(unsigned &seed);
+
+    void move();
+    void marbflect();
 
 public:
 
-    explicit Bollen(const int aantal, const sf::Vector2f &dims, const float fps, unsigned &seed);
+    explicit Balls(const int number, const sf::Vector2f &dims, const float fps, unsigned &seed);
 
     void display(sf::RenderWindow &window);
-
-    void move();
+    void moving();
 };
 
 float medims(const sf::Vector2f &dims);
@@ -37,15 +39,13 @@ int frac_to_byte(const float frac);
 float random_frac(unsigned &seed);
 
 float random_mass(unsigned &seed);
-
 float random_radius(const sf::Vector2f &dims, unsigned &seed);
 
 sf::Vector2f random_posit(const float radius, const sf::Vector2f &dims, unsigned &seed);
-
 sf::Vector2f random_speed(const sf::Vector2f &dims, unsigned &seed);
 
 sf::Color random_color(unsigned &seed);
 
-Knikker random_knikker(const sf::Vector2f &dims, const float frame, unsigned &seed);
+Marble random_marble(const sf::Vector2f &dims, const float frame, unsigned &seed);
 
-#endif // BOLLEN_H
+#endif // BALLS_H

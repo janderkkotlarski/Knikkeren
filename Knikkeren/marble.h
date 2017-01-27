@@ -1,16 +1,19 @@
-#ifndef KNIKKER_H
-#define KNIKKER_H
+#ifndef MARBLE_H
+#define MARBLE_H
 
 #include <cassert>
 #include <SFML/Graphics.hpp>
 
-class Knikker
+class Marble
 {
     const float m_mass;
     const sf::Vector2f m_dims;
     sf::Vector2f m_speed;
     const float m_frame;
     sf::CircleShape m_circle;
+    sf::Vector2f m_past;
+
+    void set_past() noexcept {m_past = m_circle.getPosition();}
 
     void add_speed();
 
@@ -23,7 +26,7 @@ public:
 
     void set_circle(const float radius, const sf::Vector2f &posit, const sf::Color &color);
 
-    explicit Knikker(const float mass, const float radius, const sf::Vector2f &dims, const sf::Vector2f &posit,
+    explicit Marble(const float mass, const float radius, const sf::Vector2f &dims, const sf::Vector2f &posit,
             const sf::Vector2f &speed, const float frame, const sf::Color &color);
 
     float get_radius() const noexcept {return m_circle.getRadius();}
@@ -31,19 +34,23 @@ public:
     sf::Vector2f get_posit() const noexcept {return m_circle.getPosition();}
     sf::Vector2f get_speed() const noexcept {return m_speed;}
 
+    void set_speed(const sf::Vector2f &speed) {m_speed = speed;}
+
     void movit();
 
-    void display_knikker(sf::RenderWindow &window) const;
+    void display_marble(sf::RenderWindow &window) const;
 };
 
+void reflect_1d();
 
+sf::Vector2f distance(const sf::Vector2f &posit_1, const sf::Vector2f &posit_2) noexcept;
 
-sf::Vector2f afstand(const sf::Vector2f &posit_1, const sf::Vector2f &posit_2) noexcept;
+float vectuare(const sf::Vector2f &vect) noexcept;
 
-float vectraat(const sf::Vector2f &vect) noexcept;
+float square(const float scalar) noexcept;
 
-float kwadraat(const float scalar) noexcept;
+bool overlap(Marble &marb_1, Marble &marb_2);
 
-bool overlap(Knikker &knik_1, Knikker &knik_2);
+void simpflect(Marble &marb_1, Marble &marb_2);
 
-#endif // KNIKKER_H
+#endif // MARBLE_H

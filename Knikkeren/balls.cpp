@@ -1,8 +1,8 @@
-#include "bollen.h"
+#include "balls.h"
 
-void Bollen::plaats_knikkers(unsigned &seed)
+void Balls::place_marbles(unsigned &seed)
 {
-    for (int count{0}; count < m_aantal; ++count)
+    for (int count{0}; count < m_number; ++count)
     {
         bool overlappen = true;
 
@@ -10,11 +10,11 @@ void Bollen::plaats_knikkers(unsigned &seed)
         {
             overlappen = false;
 
-            Knikker knik{random_knikker(m_dims, 1.0f/m_fps, seed)};
+            Marble knik{random_marble(m_dims, 1.0f/m_fps, seed)};
 
             if (count > 0)
             {
-                for (Knikker knak: m_knikkers)
+                for (Marble knak: m_marbles)
                 {
                     if (overlap(knik, knak))
                     {
@@ -25,37 +25,54 @@ void Bollen::plaats_knikkers(unsigned &seed)
 
             if (!overlappen)
             {
-                m_knikkers.push_back(knik);
+                m_marbles.push_back(knik);
             }
         }
     }
 }
 
-void Bollen::display(sf::RenderWindow &window)
+void Balls::move()
 {
-    for (int count{0}; count < m_aantal; ++count)
+    for (unsigned count{0}; count < m_marbles.size(); ++count)
     {
-        m_knikkers[count].display_knikker(window);
+        m_marbles[count].movit();
     }
 }
 
-void Bollen::move()
+void Balls::marbflect()
 {
-    for (int count{0}; count < m_aantal; ++count)
+    for (unsigned count_1{1}; count_1 < m_marbles.size(); ++count_1)
     {
-        m_knikkers[count].movit();
+        for (unsigned count_2{0}; count_2 < count_1; ++count_2)
+        {
+            simpflect(m_marbles[count_1], m_marbles[count_2]);
+        }
     }
 }
 
-Bollen::Bollen(const int aantal, const sf::Vector2f &dims, const float fps, unsigned &seed)
-    : m_aantal(aantal), m_knikkers(), m_dims(dims), m_fps(fps)
+Balls::Balls(const int number, const sf::Vector2f &dims, const float fps, unsigned &seed)
+    : m_number(number), m_marbles(), m_dims(dims), m_fps(fps)
 {
-    assert(m_aantal > 0);
+    assert(m_number > 0);
     assert(m_dims.x > 0.0f);
     assert(m_dims.y > 0.0f);
     assert(m_fps > 0.0f);
 
-    plaats_knikkers(seed);
+    place_marbles(seed);
+}
+
+void Balls::display(sf::RenderWindow &window)
+{
+    for (Marble knak: m_marbles)
+    {
+        knak.display_marble(window);
+    }
+}
+
+void Balls::moving()
+{
+    move();
+    marbflect();
 }
 
 float medims(const sf::Vector2f &dims)
@@ -76,8 +93,6 @@ int frac_to_byte(const float frac)
 
 float random_frac(unsigned &seed)
 {
-    // const unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-
     std::mt19937_64 rand(seed);
 
     const float rando{static_cast<float>(rand())};
@@ -153,13 +168,13 @@ sf::Color random_color(unsigned &seed)
                      frac_to_byte(min_frac + random_frac(seed)*(1.0f - min_frac)));
 }
 
-Knikker random_knikker(const sf::Vector2f &dims, const float frame, unsigned &seed)
+Marble random_marble(const sf::Vector2f &dims, const float frame, unsigned &seed)
 {
     assert(dims.x > 0.0f);
     assert(dims.y > 0.0f);
 
     const float radius{random_radius(dims, seed)};
 
-    return Knikker(random_mass(seed), radius, dims, random_posit(radius, dims, seed),
+    return Marble(random_mass(seed), radius, dims, random_posit(radius, dims, seed),
                    random_speed(dims, seed), frame, random_color(seed));
 }

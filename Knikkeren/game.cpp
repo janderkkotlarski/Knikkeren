@@ -15,7 +15,7 @@ void Game::run()
 {
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
-    Bollen bollen(100, m_dims, m_fps, seed);
+    Balls balls(100, m_dims, m_fps, seed);
 
     while(m_window.isOpen())
     {
@@ -34,10 +34,10 @@ void Game::run()
 
         m_window.clear(m_background);
 
-        bollen.display(m_window);
+        balls.display(m_window);
         m_window.display();
 
-        bollen.move();
+        balls.moving();
 
         time = clock.getElapsedTime();
 
