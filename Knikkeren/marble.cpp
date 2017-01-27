@@ -139,3 +139,21 @@ void simpflect(Marble &marb_1, Marble &marb_2)
         marb_2.add_speed(period);
     }
 }
+
+void realflect(Marble &marb_1, Marble &marb_2)
+{
+    if (overlap(marb_1, marb_2))
+    {
+        const float period{-repolate(marb_1, marb_2)};
+
+        marb_1.add_speed(period);
+        marb_2.add_speed(period);
+
+        const sf::Vector2f speed_1{marb_1.get_speed()};
+        const sf::Vector2f speed_2{marb_2.get_speed()};
+
+        const sf::Vector2f delta_speed{distance(speed_1, speed_2)};
+
+
+    }
+}

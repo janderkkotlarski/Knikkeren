@@ -56,5 +56,6 @@ bool overlap(Marble &marb_1, Marble &marb_2);
 float repolate(Marble &marb_1, Marble &marb_2);
 
 void simpflect(Marble &marb_1, Marble &marb_2);
+void realflect(Marble &marb_1, Marble &marb_2);
 
 #endif // MARBLE_H
