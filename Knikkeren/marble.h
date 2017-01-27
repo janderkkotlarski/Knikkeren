@@ -11,7 +11,6 @@ class Marble
     const sf::Vector2f m_dims;
     sf::Vector2f m_speed;
     const float m_frame;
-    const int m_div;
     const float m_diframe;
     sf::CircleShape m_circle;
     sf::Vector2f m_past;

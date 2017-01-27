@@ -2,7 +2,7 @@
 
 Game::Game()
 : m_name("Knikkeren"), m_dims(600.0f, 600.0f), m_fps(60.0f),
-  m_frame(1/m_fps), m_div(1000.0f), m_ball_number(100),
+  m_frame(1/m_fps), m_div(100.0f), m_ball_number(100),
    m_balls(m_ball_number, m_dims, m_fps, m_div, m_seed),
   m_seed(std::chrono::system_clock::now().time_since_epoch().count()),
   m_background(127, 63, 31), m_filler(223, 127, 95),

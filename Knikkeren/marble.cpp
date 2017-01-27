@@ -16,19 +16,16 @@ void Marble::collide_wall()
 
 void Marble::move_cycle()
 {
-    for (int count{0}; count < m_div; ++count)
-    {
-        set_past();
-        add_speed(m_diframe);
-        collide_wall();
-    }
+    set_past();
+    add_speed(m_diframe);
+    collide_wall();
 }
 
 Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
                  const sf::Vector2f &posit, const sf::Vector2f &speed, const float frame,
                  const float div, const sf::Color &color)
     : m_mass(mass), m_dims(dims), m_speed(speed), m_frame(frame),
-      m_div(static_cast<int>(div)), m_diframe(m_frame/div), m_circle(), m_past()
+      m_diframe(m_frame/div), m_circle(), m_past()
 {
     assert(m_mass > 0.0f);
     assert(radius > 0.0f);
@@ -40,7 +37,6 @@ Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
     assert(m_speed.y < m_dims.y);
     assert(m_frame > 0.0f);
     assert(m_frame < 1.0f);
-    assert(m_div >= 2.0f);
 
     set_circle(radius, posit, color);
     set_past();
@@ -55,10 +51,6 @@ void Marble::display_marble(sf::RenderWindow &window) const
 {
     window.draw(m_circle);
 }
-
-
-
-
 
 float walled(const float wall, const float current, const float radius, float &veloc)
 {

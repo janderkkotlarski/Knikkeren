@@ -4,9 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    knikker.cpp \
     game.cpp \
-    bollen.cpp
+    balls.cpp \
+    marble.cpp
 
 QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra
 
@@ -17,6 +17,6 @@ LIBS += -LD:/SFML-2.4.0/lib
 LIBS += -LD:\SFML-2.4.0\bin
 
 HEADERS += \
-    knikker.h \
     game.h \
-    bollen.h
+    balls.h \
+    marble.h
