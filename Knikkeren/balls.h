@@ -18,7 +18,7 @@ class Balls
     std::vector <Marble> m_marbles;
     const sf::Vector2f m_dims;
     const float m_fps;
-    const int m_div;
+    const float m_div;
 
     void place_marbles(unsigned &seed);
 

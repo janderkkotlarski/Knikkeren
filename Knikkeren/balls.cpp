@@ -57,7 +57,7 @@ Balls::Balls(const int number, const sf::Vector2f &dims, const float fps, const 
     assert(m_dims.x > 0.0f);
     assert(m_dims.y > 0.0f);
     assert(m_fps > 0.0f);
-    assert(m_div >= 2);
+    assert(m_div >= 2.0f);
 
     place_marbles(seed);
 }
@@ -72,9 +72,11 @@ void Balls::display(sf::RenderWindow &window)
 
 void Balls::moving()
 {
-    // for (int count{0}; count < )
-    move();
-    marbflect();
+    for (int count{0}; count < m_div; ++count)
+    {
+        move();
+        marbflect();
+    }
 }
 
 float medims(const sf::Vector2f &dims)
@@ -170,7 +172,7 @@ sf::Color random_color(unsigned &seed)
                      frac_to_byte(min_frac + random_frac(seed)*(1.0f - min_frac)));
 }
 
-Marble random_marble(const sf::Vector2f &dims, const float frame, const int div, unsigned &seed)
+Marble random_marble(const sf::Vector2f &dims, const float frame, const float div, unsigned &seed)
 {
     assert(dims.x > 0.0f);
     assert(dims.y > 0.0f);

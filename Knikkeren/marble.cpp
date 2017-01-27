@@ -37,6 +37,8 @@ Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
     assert(m_speed.y < m_dims.y);
     assert(m_frame > 0.0f);
     assert(m_frame < 1.0f);
+    assert(m_diframe > 0.0f);
+    assert(m_diframe < 1.0f);
 
     set_circle(radius, posit, color);
     set_past();
@@ -112,9 +114,16 @@ float repolate(Marble &marb_1, Marble &marb_2)
 
     const float delta{std::sqrt(square(beta) - 4.0f*alpha*gamma)};
 
-    const float deltime{diframe - 0.5f*(delta - beta)/alpha};
+    const float deltime_p{0.5f*diframe*(delta - beta)/alpha};
 
-    return deltime;
+    const float deltime_n{0.5f*diframe*(-delta - beta)/alpha};
+
+    if (deltime_n < deltime_p)
+    {
+        return diframe - deltime_n;
+    }
+
+    return diframe - deltime_p;
 }
 
 void simpflect(Marble &marb_1, Marble &marb_2)
