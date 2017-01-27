@@ -17,10 +17,7 @@ class Marble
 
     void add_speed();
 
-    void minflect();
-    void maxflect();
-
-    void wall_reflect();
+    void collide_wall();
 
 public:
 
@@ -41,7 +38,7 @@ public:
     void display_marble(sf::RenderWindow &window) const;
 };
 
-void reflect_1d();
+float walled(const float wall, const float current, const float radius, float &veloc);
 
 sf::Vector2f distance(const sf::Vector2f &posit_1, const sf::Vector2f &posit_2) noexcept;
 

@@ -13,62 +13,11 @@ void Marble::add_speed()
     m_circle.move(m_frame*m_speed);
 }
 
-void Marble::minflect()
+void Marble::collide_wall()
 {
-    const float pos_x{m_circle.getPosition().x};
-    const float pos_y{m_circle.getPosition().y};
-    const float radius{m_circle.getRadius()};
-
-    if (pos_x < radius)
-    {
-        m_circle.setPosition(2.0f*radius - pos_x, pos_y);
-        m_speed.x *= -1.0f;
-    }
-
-    assert(m_circle.getPosition().x >= radius);
-
-    const float bos_x{m_circle.getPosition().x};
-
-    if (pos_y < radius)
-    {
-        m_circle.setPosition(bos_x, 2.0f*radius - pos_y);
-        m_speed.y *= -1.0f;
-    }
-
-    assert(m_circle.getPosition().y >= radius);
+    m_circle.setPosition(walled(m_dims.x, m_circle.getPosition().x, m_circle.getRadius(), m_speed.x),
+                         walled(m_dims.y, m_circle.getPosition().y, m_circle.getRadius(), m_speed.y));
 }
-
-void Marble::maxflect()
-{
-    const float pos_x{m_circle.getPosition().x};
-    const float pos_y{m_circle.getPosition().y};
-    const float radius{m_circle.getRadius()};
-
-    if (pos_x > m_dims.x - radius)
-    {
-        m_circle.setPosition(2.0f*(m_dims.x - radius) - pos_x, pos_y);
-        m_speed.x *= -1.0f;
-    }
-
-    assert(m_circle.getPosition().x <= m_dims.x - radius);
-
-    const float bos_x{m_circle.getPosition().x};
-
-    if (pos_y > m_dims.y - radius)
-    {
-        m_circle.setPosition(bos_x, 2.0f*(m_dims.y - radius) - pos_y);
-        m_speed.y *= -1.0f;
-    }
-
-    assert(m_circle.getPosition().y <= m_dims.y - radius);
-}
-
-void Marble::wall_reflect()
-{
-    minflect();
-    maxflect();
-}
-
 
 Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
                  const sf::Vector2f &posit, const sf::Vector2f &speed, const float frame,
@@ -91,8 +40,10 @@ Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
 
 void Marble::movit()
 {
+    set_past();
     add_speed();
-    wall_reflect();
+
+    collide_wall();
 }
 
 void Marble::display_marble(sf::RenderWindow &window) const
@@ -100,9 +51,21 @@ void Marble::display_marble(sf::RenderWindow &window) const
     window.draw(m_circle);
 }
 
-void reflect_1d()
+float walled(const float wall, const float current, const float radius, float &veloc)
 {
-    // const float
+    if (current < radius)
+    {
+        veloc *= -1.0f;
+        return 2.0f*radius - current;
+    }
+
+    if (current > wall - radius)
+    {
+        veloc *= -1.0f;
+        return 2.0f*(wall - radius) - current;
+    }
+
+    return current;
 }
 
 sf::Vector2f distance(const sf::Vector2f &posit_1, const sf::Vector2f &posit_2) noexcept
