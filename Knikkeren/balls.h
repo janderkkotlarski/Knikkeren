@@ -18,6 +18,7 @@ class Balls
     std::vector <Marble> m_marbles;
     const sf::Vector2f m_dims;
     const float m_fps;
+    const float m_div;
 
     void place_marbles(unsigned &seed);
 
@@ -26,7 +27,7 @@ class Balls
 
 public:
 
-    explicit Balls(const int number, const sf::Vector2f &dims, const float fps, unsigned &seed);
+    explicit Balls(const int number, const sf::Vector2f &dims, const float fps, const float div, unsigned &seed);
 
     void display(sf::RenderWindow &window);
     void moving();
@@ -46,6 +47,6 @@ sf::Vector2f random_speed(const sf::Vector2f &dims, unsigned &seed);
 
 sf::Color random_color(unsigned &seed);
 
-Marble random_marble(const sf::Vector2f &dims, const float frame, unsigned &seed);
+Marble random_marble(const sf::Vector2f &dims, const float frame, const float div, unsigned &seed);
 
 #endif // BALLS_H

@@ -18,6 +18,12 @@ class Game
 
     const float m_fps; // Zero Punctuation Stereotype
     const float m_frame;
+    const float m_div;
+
+    const int m_ball_number;
+    Balls m_balls;
+
+    unsigned m_seed;
 
     const sf::Color m_background;
     const sf::Color m_filler;

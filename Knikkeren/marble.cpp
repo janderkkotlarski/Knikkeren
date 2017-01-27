@@ -10,7 +10,7 @@ void Marble::set_circle(const float radius, const sf::Vector2f &posit, const sf:
 
 void Marble::add_speed()
 {
-    m_circle.move(m_frame*m_speed);
+    m_circle.move(m_frame*m_speed/m_div);
 }
 
 void Marble::collide_wall()
@@ -19,10 +19,20 @@ void Marble::collide_wall()
                          walled(m_dims.y, m_circle.getPosition().y, m_circle.getRadius(), m_speed.y));
 }
 
+void Marble::move_cycle()
+{
+    for (int count{0}; count < static_cast<int>(m_div); ++count)
+    {
+        set_past();
+        add_speed();
+        collide_wall();
+    }
+}
+
 Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
                  const sf::Vector2f &posit, const sf::Vector2f &speed, const float frame,
-                 const sf::Color &color)
-    : m_mass(mass), m_dims(dims), m_speed(speed), m_frame(frame), m_circle(), m_past()
+                 const float div, const sf::Color &color)
+    : m_mass(mass), m_dims(dims), m_speed(speed), m_frame(frame), m_div(div), m_circle(), m_past()
 {
     assert(m_mass > 0.0f);
     assert(radius > 0.0f);
@@ -33,6 +43,8 @@ Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
     assert(m_speed.x < m_dims.x);
     assert(m_speed.y < m_dims.y);
     assert(m_frame > 0.0f);
+    assert(m_frame < 1.0f);
+    assert(m_div >= 2.0f);
 
     set_circle(radius, posit, color);
     set_past();
@@ -40,10 +52,7 @@ Marble::Marble(const float mass, const float radius, const sf::Vector2f &dims,
 
 void Marble::movit()
 {
-    set_past();
-    add_speed();
-
-    collide_wall();
+    move_cycle();
 }
 
 void Marble::display_marble(sf::RenderWindow &window) const

@@ -10,7 +10,7 @@ void Balls::place_marbles(unsigned &seed)
         {
             overlappen = false;
 
-            Marble knik{random_marble(m_dims, 1.0f/m_fps, seed)};
+            Marble knik{random_marble(m_dims, 1.0f/m_fps, m_div, seed)};
 
             if (count > 0)
             {
@@ -50,13 +50,14 @@ void Balls::marbflect()
     }
 }
 
-Balls::Balls(const int number, const sf::Vector2f &dims, const float fps, unsigned &seed)
-    : m_number(number), m_marbles(), m_dims(dims), m_fps(fps)
+Balls::Balls(const int number, const sf::Vector2f &dims, const float fps, const float div, unsigned &seed)
+    : m_number(number), m_marbles(), m_dims(dims), m_fps(fps), m_div(div)
 {
     assert(m_number > 0);
     assert(m_dims.x > 0.0f);
     assert(m_dims.y > 0.0f);
     assert(m_fps > 0.0f);
+    assert(m_div >= 2.0f);
 
     place_marbles(seed);
 }
@@ -168,13 +169,17 @@ sf::Color random_color(unsigned &seed)
                      frac_to_byte(min_frac + random_frac(seed)*(1.0f - min_frac)));
 }
 
-Marble random_marble(const sf::Vector2f &dims, const float frame, unsigned &seed)
+Marble random_marble(const sf::Vector2f &dims, const float frame, const float div, unsigned &seed)
 {
     assert(dims.x > 0.0f);
     assert(dims.y > 0.0f);
+    assert(frame > 0.0f);
+    assert(frame < 1.0f);
+    assert(div > 2.0f);
+
 
     const float radius{random_radius(dims, seed)};
 
     return Marble(random_mass(seed), radius, dims, random_posit(radius, dims, seed),
-                   random_speed(dims, seed), frame, random_color(seed));
+                   random_speed(dims, seed), frame, div, random_color(seed));
 }

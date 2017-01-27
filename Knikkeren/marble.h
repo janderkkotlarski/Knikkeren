@@ -10,6 +10,7 @@ class Marble
     const sf::Vector2f m_dims;
     sf::Vector2f m_speed;
     const float m_frame;
+    const float m_div;
     sf::CircleShape m_circle;
     sf::Vector2f m_past;
 
@@ -19,12 +20,14 @@ class Marble
 
     void collide_wall();
 
+    void move_cycle();
+
 public:
 
     void set_circle(const float radius, const sf::Vector2f &posit, const sf::Color &color);
 
     explicit Marble(const float mass, const float radius, const sf::Vector2f &dims, const sf::Vector2f &posit,
-            const sf::Vector2f &speed, const float frame, const sf::Color &color);
+                    const sf::Vector2f &speed, const float frame, const float div, const sf::Color &color);
 
     float get_radius() const noexcept {return m_circle.getRadius();}
     float get_mass() const noexcept {return m_mass;}
