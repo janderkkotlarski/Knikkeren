@@ -103,6 +103,15 @@ bool overlap(Marble &marb_1, Marble &marb_2)
     return false;
 }
 
+void repolate(Marble &marb_1, Marble &marb_2)
+{
+    const sf::Vector2f dist{distance(marb_1.get_posit(), marb_2.get_posit())};
+
+    const sf::Vector2f fast{distance(marb_1.get_speed(), marb_2.get_speed())};
+
+
+}
+
 void simpflect(Marble &marb_1, Marble &marb_2)
 {
     if (overlap(marb_1, marb_2))
@@ -110,4 +119,6 @@ void simpflect(Marble &marb_1, Marble &marb_2)
         marb_1.set_speed(-marb_1.get_speed());
         marb_2.set_speed(-marb_2.get_speed());
     }
+
+
 }
