@@ -57,6 +57,9 @@ bool overlap(Marble &marb_1, Marble &marb_2);
 float repolate(Marble &marb_1, Marble &marb_2);
 
 void simpflect(Marble &marb_1, Marble &marb_2);
+
+void display_Vector2f(const sf::Vector2f &vector);
+
 void realflect(Marble &marb_1, Marble &marb_2);
 
 #endif // MARBLE_H
