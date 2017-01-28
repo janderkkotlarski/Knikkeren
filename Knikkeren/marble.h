@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
+
 #include <SFML/Graphics.hpp>
 
 class Marble

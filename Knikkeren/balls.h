@@ -26,11 +26,13 @@ class Balls
     void marbflect();
 
     void total_impulse();
-    void total_energy();
+
 
 public:
 
     explicit Balls(const int number, const sf::Vector2f &dims, const float fps, const float div, unsigned &seed);
+
+    float total_energy();
 
     void display(sf::RenderWindow &window);
     void moving();

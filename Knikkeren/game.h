@@ -10,6 +10,7 @@
 
 #include "marble.h"
 #include "balls.h"
+#include "text.h"
 
 class Game
 {
@@ -30,10 +31,15 @@ class Game
     const sf::Color m_filler;
 
     sf::RenderWindow m_window;
+    Text m_texter;
 
 public:
 
     Game();
+
+    void floater() {m_texter.float_stringer(m_balls.total_energy());}
+
+    void texting() noexcept {m_texter.display(m_window);}
 
     void run();
 };

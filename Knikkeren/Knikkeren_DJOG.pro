@@ -6,7 +6,8 @@ CONFIG -= qt
 SOURCES += main.cpp \
     game.cpp \
     balls.cpp \
-    marble.cpp
+    marble.cpp \
+    text.cpp
 
 QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra
 
@@ -21,4 +22,5 @@ HEADERS += \
     window_looper.h \
     game.h \
     balls.h \
-    marble.h
+    marble.h \
+    text.h

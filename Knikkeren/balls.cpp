@@ -64,7 +64,7 @@ void Balls::total_impulse()
 }
 
 
-void Balls::total_energy()
+float Balls::total_energy()
 {
     float energy{0.0f};
 
@@ -73,7 +73,7 @@ void Balls::total_energy()
         energy += m_marbles[count].get_mass()*vectuare(m_marbles[count].get_speed());
     }
 
-    std::cout << energy << "\n";
+    return energy;
 }
 Balls::Balls(const int number, const sf::Vector2f &dims, const float fps, const float div, unsigned &seed)
     : m_number(number), m_marbles(), m_dims(dims), m_fps(fps), m_div(div)
@@ -140,7 +140,7 @@ float random_mass(unsigned &seed)
     assert(min_frac >= 0.01f);
     assert(min_frac < 0.2f);
 
-    return std::exp(15.0f*(min_frac + random_frac(seed)*(1.0f - min_frac)));
+    return std::exp(1.0f*(min_frac + random_frac(seed)*(1.0f - min_frac)));
 }
 
 float random_radius(const sf::Vector2f &dims, unsigned &seed)
@@ -148,7 +148,7 @@ float random_radius(const sf::Vector2f &dims, unsigned &seed)
     assert(dims.x > 0.0f);
     assert(dims.y > 0.0f);
 
-    const float perc{0.10f};
+    const float perc{0.15f};
     assert(perc > 0.0f);
     assert(perc <= 0.2f);
 
