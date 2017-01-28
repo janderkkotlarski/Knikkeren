@@ -154,7 +154,7 @@ void realflect(Marble &marb_1, Marble &marb_2)
         marb_1.add_speed(-period);
         marb_2.add_speed(-period);
 
-        const sf::Vector2f delta_dist{distance(marb_1.get_posit(), marb_1.get_posit())};
+        const sf::Vector2f delta_dist{distance(marb_1.get_posit(), marb_2.get_posit())};
 
         const sf::Vector2f speed_1{marb_1.get_speed()};
         const sf::Vector2f speed_2{marb_2.get_speed()};
@@ -164,16 +164,11 @@ void realflect(Marble &marb_1, Marble &marb_2)
         const float comp_mass_1{2.0f*marb_2.get_mass()/(marb_1.get_mass() + marb_2.get_mass())};
         const float comp_mass_2{2.0f*marb_1.get_mass()/(marb_1.get_mass() + marb_2.get_mass())};
 
-        const float speed_dist{(delta_speed.x*delta_dist.x + delta_speed.x*delta_dist.x)/
+        const float speed_dist{(delta_speed.x*delta_dist.x + delta_speed.y*delta_dist.y)/
                     vectuare(delta_dist)};
 
-        // display_Vector2f(speed_dist);
-
         marb_1.set_speed(speed_1 + comp_mass_1*speed_dist*delta_dist);
-        marb_2.set_speed(speed_2 + comp_mass_2*speed_dist*delta_dist);
-
-        // display_Vector2f(marb_1.get_speed());
-        // display_Vector2f(marb_2.get_speed());
+        marb_2.set_speed(speed_2 - comp_mass_2*speed_dist*delta_dist);
 
         marb_1.add_speed(period);
         marb_2.add_speed(period);

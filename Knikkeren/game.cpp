@@ -2,9 +2,10 @@
 
 Game::Game()
 : m_name("Knikkeren"), m_dims(600.0f, 600.0f), m_fps(60.0f),
-  m_frame(1/m_fps), m_div(1000.0f), m_ball_number(8),
-  m_balls(m_ball_number, m_dims, m_fps, m_div, m_seed),
+  m_frame(1/m_fps), m_div(1000.0f),
   m_seed(std::chrono::system_clock::now().time_since_epoch().count()),
+  m_ball_number(25),
+  m_balls(m_ball_number, m_dims, m_fps, m_div, m_seed),
   m_background(127, 63, 31), m_filler(223, 127, 95),
   m_window(sf::VideoMode(m_dims.x, m_dims.y), m_name, sf::Style::Default)
 {

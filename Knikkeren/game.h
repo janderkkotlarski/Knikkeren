@@ -4,6 +4,7 @@
 #include <cassert>
 #include <iostream>
 #include <string>
+#include <random>
 
 #include <SFML/Graphics.hpp>
 
@@ -20,10 +21,10 @@ class Game
     const float m_frame;
     const float m_div;
 
+    unsigned m_seed;
+
     const int m_ball_number;
     Balls m_balls;
-
-    unsigned m_seed;
 
     const sf::Color m_background;
     const sf::Color m_filler;

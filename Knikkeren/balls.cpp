@@ -110,8 +110,6 @@ float random_frac(unsigned &seed)
 
 float random_mass(unsigned &seed)
 {
-    return 1.0f;
-
     const float min_frac{0.01f};
     assert(min_frac >= 0.01f);
     assert(min_frac < 0.2f);
@@ -121,12 +119,8 @@ float random_mass(unsigned &seed)
 
 float random_radius(const sf::Vector2f &dims, unsigned &seed)
 {
-
-
     assert(dims.x > 0.0f);
     assert(dims.y > 0.0f);
-
-    return (0.05f*medims(dims));
 
     const float perc{0.05f};
     assert(perc > 0.0f);
@@ -157,13 +151,11 @@ sf::Vector2f random_speed(const sf::Vector2f &dims, unsigned &seed)
     assert(dims.x > 0.0f);
     assert(dims.y > 0.0f);
 
-    const float perc{0.01f};
+    const float perc{0.5f};
     assert(perc > 0.0f);
     assert(perc <= 0.5f);
 
-    // const float speed{(random_frac(seed) - 0.5f)*perc*medims(dims)};
-
-    const float speed{perc*medims(dims)};
+    const float speed{(random_frac(seed) - 0.5f)*perc*medims(dims)};
 
     const float phi{random_frac(seed)*2.0f*3.14159f};
 
